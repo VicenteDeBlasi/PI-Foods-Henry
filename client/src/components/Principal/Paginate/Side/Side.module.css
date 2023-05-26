@@ -49,6 +49,7 @@
     background-color: #A6CFD5;
     width: 7rem;
     padding: .4rem 0rem;
+    transition: 0.2s ease-in-out;
 }
 
 .orderConteiner>button:hover,

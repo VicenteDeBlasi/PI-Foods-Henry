@@ -48,6 +48,7 @@
     cursor: pointer;
     padding: .5rem .5rem;
     font-family: sans-serif, 'Times New Roman', Times;
+    transition: 0.2s ease-in-out;
 }
 
 .buttonCreate:hover,
@@ -56,7 +57,7 @@
 }
 
 .buttonCreate:hover {
-    transform: translateY(-1px);
+    scale: 1.04;
 }
 
 .buttonCreate:active {

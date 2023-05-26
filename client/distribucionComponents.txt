@@ -1,0 +1,58 @@
+Componentes presentacionales
+
+-Principal/Principal.jsx
+-Principal/Create/ChooseDiets/ChooseDiets.jsx
+-Principal/Create/RequiredInfo/RequiredInfo.jsx
+-Principal/Details/CardDetails.jsx
+-Principal/Footer/Footer.jsx
+-Principal/Loading/Loading.jsx
+-Principal/Paginate/Paginate.jsx
+-Principal/Main/Main.jsx
+-Principal/Main/Cards/Cards.jsx
+-Principal/Main/Empty/Empty.jsx
+
+
+Componentes contenedores
+
+-Principal/Create/Create.jsx -
+-Principal/Create/Steps/Steps.jsx -
+-Principal/Details/Details.jsx -
+-Principal/Header/Header.jsx -
+-Principal/Paginate/Side/Side.jsx - 
+-Principal/Paginate/Main/Buttons/Buttons.jsx -
+-Principal/Paginate/Main/Buttons/Button.jsx - 
+-Principal/Paginate/Main/Cards/Card.jsx - 
+
+>Principal
+  >Create
+   >ChooseDiets
+    -ChoseDiets.jsx PRESENTACIONAL
+   >RequiredInfo
+    -RequiredInfo.jsx PRESENTACIONAL
+   >Steps
+    -Steps.jsx CONTENEDOR
+   -Create.jsx CONTENEDOR
+  >Details
+   -CardDetails.jsx PRESENTACIONAL
+   -Details.jsx CONTENEDOR
+  >Footer
+   -Footer.jsx PRESENTACIONAL
+  >Header
+   -Header.jsx CONTENEDOR
+  >Loading
+   -Loading.jsx PRESENTACIONAL
+  >Paginate
+   >Main
+    >Buttons
+     -Button.jsx CONTENEDOR
+     -Buttons.jsx CONTENEDOR
+    >Cards
+     -Card.jsx CONTENEDOR
+     -Cards.jsx PRESENTACIONAL
+    >Empty
+     -Empty.jsx PRESENTACIONAL
+    -Main.jsx PRESENTACIONAL
+   >Side
+    -Side.jsx CONTENEDOR
+   -Paginate.jsx PRESENTACIONAL
+  Principal/Principal.jsx PRESENTACIONAL

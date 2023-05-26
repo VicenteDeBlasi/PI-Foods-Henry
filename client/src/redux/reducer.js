@@ -43,12 +43,19 @@ const rootReducer = (state = initialState, actions) => {
             }
         case 'ORDER':
 
+            // ? Extrae las propiedades typeOrder, asc y atribute del payload de la acción.
             const { typeOrder, asc, atribute } = actions.payload;
 
+            // ? Crea una variable newOrder como una lista vacía que contendrá la lista de recetas ordenadas.
             let newOrder = []
 
+            // ? Comprueba si typeOrder es igual a "string" para determinar.
             if (typeOrder === "string") {
 
+                // ? Si typeOrder es "string" (ordena de forma alfabetica), utiliza el método sort() en la lista de recetas (state.allRecipes) 
+                // ? para ordenarlas según el valor de la propiedad atribute. 
+                // ? Si asc es true, el orden es ascendente; de lo contrario, el orden es descendente.
+                // ? guardamos la lista ordenada en la variable newOrder.
                 newOrder = asc ? [...state.allRecipes.sort((a, b) => (a[atribute].toLowerCase() > b[atribute].toLowerCase()) ? 1 :
                     (a[atribute].toLowerCase() < b[atribute].toLowerCase()) ? -1 : 0)] :
 
@@ -56,6 +63,9 @@ const rootReducer = (state = initialState, actions) => {
                         (a[atribute].toLowerCase() < b[atribute].toLowerCase()) ? -1 : 0)]
             } else {
 
+                // ? Si typeOrder es diferente de "string", se asume que es un orden numérico (HealthScore) 
+                // ? y se utiliza el método sort() de manera similar.
+                // ? guardamos la lista ordenada en la variable newOrder.
                 newOrder = asc ? [...state.allRecipes.sort((a, b) => (a[atribute] > b[atribute]) ? 1 :
                     (a[atribute] < b[atribute]) ? -1 : 0)] :
 
@@ -63,6 +73,8 @@ const rootReducer = (state = initialState, actions) => {
                         (a[atribute] < b[atribute]) ? -1 : 0)]
             }
 
+            // ? Devolver un nuevo estado que incluye la lista de recetas ordenadas (newOrder), 
+            // ? establecer la página en 1 y mantener las demás propiedades del estado iguales.
             return {
                 ...state,
                 allRecipes: newOrder,

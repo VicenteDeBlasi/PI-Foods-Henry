@@ -13,9 +13,9 @@
     background-color: rgb(166,207,213);
     color: rgb(243, 243, 242);
     font-weight: bolder;
-    border-radius: .4rem;
+    border-radius: 10rem;
     border: none;
-
+    transition: 0.2s ease-in-out;
 }
 
 .buttonConteiners>button:hover {

@@ -8,6 +8,9 @@ import Steps from "./Steps/Steps";
 import style from './Create.module.css';
 import { getRecipesBackend, newRecipe, resetRecipes } from "../../../redux/actions";
 
+// * El componente Create es un formulario para crear una nueva receta. Almacena los datos del formulario en el estado local y 
+// * realiza la lógica de validación y envío del formulario al servidor. También proporciona funcionalidades para agregar 
+// * y eliminar pasos y gestionar las opciones de dieta seleccionadas.
 const Create = () => {
 
     const history = useHistory();
@@ -32,6 +35,8 @@ const Create = () => {
     const [enabledSubmit, setEnabledSubmit] = useState(false);
     /* const [newRecipe, setNewRecipe] = useState(false) */
 
+// * se utiliza para realizar una comprobación cuando el estado de validación cambia 
+// * y habilitar o deshabilitar el botón de envío del formulario.
     useEffect(() => {
 
         const { nameValidation, healthScoreValidation, summaryValidation } = validation;
@@ -42,6 +47,8 @@ const Create = () => {
 
     }, [setEnabledSubmit, validation]);
 
+// * Esta función se utiliza como controlador de eventos para los cambios en los campos de entrada del formulario. 
+// * Actualiza el estado infoForm con los valores ingresados en los campos y realiza algunas validaciones dependiendo del campo cambiado.
     const changeHandler = (e) => {
 
         setInfoForm({
@@ -65,6 +72,8 @@ const Create = () => {
         }
     }
 
+// * Es un controlador de eventos que se ejecuta cuando se selecciona o deselecciona una opción de dieta en el formulario. 
+// * Actualiza el estado infoForm con las dietas seleccionadas.
     const selectDiets = (e) => {
 
         if (e.target.checked === false) {
@@ -80,6 +89,8 @@ const Create = () => {
         }
     }
 
+// * Esta función se utiliza para agregar un nuevo paso al formulario. 
+// * Actualiza el estado infoForm agregando un nuevo paso al objeto steps.
     const addStep = (step) => {
 
         const newSteps = { ...infoForm.steps, [`${Object.keys(infoForm.steps).length + 1}`]: step }
@@ -91,6 +102,8 @@ const Create = () => {
 
     }
 
+// * Se utiliza para eliminar el último paso agregado al formulario. 
+// * Actualiza el estado infoForm eliminando el último paso del objeto steps.
     const deleteStep = () => {
 
         const copyArr = Object.entries(infoForm.steps);
@@ -105,6 +118,7 @@ const Create = () => {
 
     }
 
+// * Restablece el estado de infoForm eliminando todos los pasos del objeto steps.
     const resetStep = (e) => {
        return setInfoForm({
             ...infoForm,
@@ -113,6 +127,9 @@ const Create = () => {
 
     }
 
+// * Esta función se utiliza para volver a la página anterior. Realiza una redirección a la ruta "/recipes" y, 
+// * dependiendo del estado newRecipeCreate, despacha una acción para obtener las recetas desde el backend o reiniciar 
+// * las recetas en el estado global.
     const goBack = () => {
 
         (newRecipeCreate)? dispatch(getRecipesBackend()): dispatch(resetRecipes());
@@ -120,7 +137,9 @@ const Create = () => {
         history.push('/recipes')
 
     }
-
+    
+// * Elimina un paso específico del formulario según el número de paso proporcionado. 
+// * Actualiza el estado infoForm eliminando el paso correspondiente del objeto steps.
     const deleteStepByN = (n) => {
 
         const newSteps = {};
@@ -139,6 +158,11 @@ const Create = () => {
 
     }
 
+// * Esta función se ejecuta cuando se envía el formulario. Realiza una solicitud POST al servidor utilizando Axios 
+// * para enviar los datos del formulario. Si la respuesta es exitosa, muestra una alerta preguntando si se desea crear otra receta. 
+// * Si no se desea crear otra receta, realiza una redirección a la ruta "/recipes" y, dependiendo del estado newRecipeCreate, 
+// * despacha una acción para obtener las recetas desde el backend o reiniciar las recetas en el estado global. 
+// * Si ocurre un error, muestra una alerta y realiza una redirección a la ruta "/recipes".
     async function formSubmit(e) {
 
         try {

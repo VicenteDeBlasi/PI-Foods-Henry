@@ -24,6 +24,9 @@ class Side extends Component {
         this.reset = this.reset.bind(this);
     }
 
+// * Esta función se ejecuta cuando hay una actualización en el componente. Compara la longitud de markedDiets en el estado 
+// * anterior y actual. Si ha cambiado, verifica si markedDiets no está vacío y llama a la acción filterByDiets con el valor 
+// * de markedDiets como argumento. Si markedDiets está vacío, llama a la acción resetRecipes.
     componentDidUpdate(prevProps, prevState) {
 
         if (prevState.markedDiets.length !== this.state.markedDiets.length){
@@ -34,6 +37,9 @@ class Side extends Component {
                             }
     }
 
+// * Se ejecuta cuando se hace clic en los botones de ordenar. Llama a la acción order con los parámetros typeOrder (string o number), 
+// * asc (booleano) y atribute (nombre de la propiedad a ordenar). 
+// * Luego actualiza el estado nameOrder o healthScoreOrder según el tipo de orden seleccionado.
     tickOrder(e, typeOrder, asc, atribute) {
 
         this.props.dispatch(order({ typeOrder, asc, atribute }));
@@ -44,6 +50,10 @@ class Side extends Component {
 
     }
 
+// * Se ejecuta cuando se marca o desmarca una casilla de verificación de dieta. 
+// * Si la casilla se marca, agrega el valor de la dieta al estado markedDiets. Si se desmarca, 
+// * filtra el valor de la dieta del estado markedDiets. 
+// * Además, restablece los estados nameOrder y healthScoreOrder a su estado inicial.
     tickCheckbox(e) {
 
         if (e.target.checked) {
@@ -76,6 +86,9 @@ class Side extends Component {
                                     } }))
     }
 
+// * Se ejecuta cuando se hace clic en el botón "Reiniciar". 
+// * Restablece el estado markedDiets, nameOrder y healthScoreOrder a su 
+// * estado inicial y luego llama a la acción resetRecipes.
     reset(e) {
         this.setState(state => ({markedDiets: [],
                                     nameOrder: {

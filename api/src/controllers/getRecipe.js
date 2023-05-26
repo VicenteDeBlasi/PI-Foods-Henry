@@ -31,21 +31,21 @@ const getRecipeByName = async (req, res) => {
   try {
     const { name } = req.query;
 
-    // Busca 100 recetas en la API
+    // * Busca 100 recetas en la API
     const { results } = await axios
       .get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
       )
       .then((r) => r.data);
 
-    //Filtra las recetas a solo las que tengan el valor de la query "name" incluida en su titulo
+    // * Filtra las recetas a solo las que tengan el valor de la query "name" incluida en su titulo
     let recipesApi = !!name
       ? results.filter((recipe) =>
           recipe.title.toLowerCase().includes(name.toLowerCase())
         )
       : results;
 
-    //Objeto de cada receta solo con las propiedades necesarias
+    // * Objeto de cada receta solo con las propiedades necesarias
     recipesApi = recipesApi.map((recipe) => reduceObjectsRecipes(recipe));
 
     let recipesDB = await Recipe.findAll({

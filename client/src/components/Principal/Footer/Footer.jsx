@@ -16,8 +16,8 @@ class Footer extends Component {
                     </span>
                 </div>
                 <div className={style.infoRight}>
-                    <a href="https://www.instagram.com/vicente.dblasi/">INSTAGRAM<img src="https://i.postimg.cc/rdSrLf8Z/instalogo.png" alt="instagram" /></a>
-                    <a href="https://github.com/VicenteDeBlasi">GITHUB<img src="https://i.postimg.cc/Vs9NRcSz/logo-Git-Hub.png" alt="github" /></a>
+                    <a target="_blank" href="https://www.instagram.com/vicente.dblasi/">INSTAGRAM<img src="https://i.postimg.cc/rdSrLf8Z/instalogo.png" alt="instagram" /></a>
+                    <a target="_blank" href="https://github.com/VicenteDeBlasi">GITHUB<img src="https://i.postimg.cc/Vs9NRcSz/logo-Git-Hub.png" alt="github" /></a>
                 </div>
 
 
